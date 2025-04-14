@@ -1,6 +1,9 @@
 package edu.ucompensar;
 
 import java.util.Scanner;
+
+import edu.ucompensar.ClasesMenu.ListarCarreras;
+
 import static edu.ucompensar.Banner.*;
 
 public class Menu {
