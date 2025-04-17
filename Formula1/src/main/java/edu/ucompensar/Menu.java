@@ -104,7 +104,7 @@ public class Menu {
             switch (opcion) {
                 case 121:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL CIRCUITO");
-                    //ImprimirInformacionCircuito.ImprimirInformacionCircuito();
+                    ImprimirInformacionCircuito.ImprimirInformacionCircuito();
                     break;
                 case 122:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA ");
