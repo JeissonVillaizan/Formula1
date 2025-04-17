@@ -10,6 +10,7 @@ import static edu.ucompensar.Banner.bannerMenuPilotos;
 import static edu.ucompensar.Banner.bannerSeleccionCarrera;
 import static edu.ucompensar.Banner.bannerSeleccionPiloto;
 import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
+import edu.ucompensar.ClasesMenu.ListarCarreras;
 
 public class Menu {
 
@@ -68,6 +69,7 @@ public class Menu {
             switch (opcion) {
                 case 11:
                     System.out.println("LLAMAR LISTAR CARRERAS");
+                    ListarCarreras.ListarCarreras();
                     break;
                 case 12:
                     menuSeleccionarCarrera();
