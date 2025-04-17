@@ -150,9 +150,8 @@ public class Menu {
             switch (opcion) {
                 case 21:
                     System.out.println("LLAMAR LISTAR PILOTOS");
-                    ListarPilotos listarPilotos = new ListarPilotos(); // Crear una instancia de la clase
-                    listarPilotos.listarPilotos(); // Llamar al método para listar pilotos
-                    break;
+                    ListarPilotos.ListarPilotos();
+                    break; 
                 case 22:
                     menuSeleccionarPiloto();
                     break;
