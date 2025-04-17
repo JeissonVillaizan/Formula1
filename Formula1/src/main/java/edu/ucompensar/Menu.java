@@ -12,7 +12,9 @@ import static edu.ucompensar.Banner.bannerSeleccionPiloto;
 import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirConstructoresCarrera;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
+import edu.ucompensar.ClasesMenu.ImprimirPilotosCarrera;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
+import edu.ucompensar.ClasesMenu.ListarPilotos;
 
 public class Menu {
 
@@ -114,7 +116,7 @@ public class Menu {
                     break;
                 case 123:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");
-                    //ImprimirPilotosCarrera.ImprimirPilotosCarrera();
+                    ImprimirPilotosCarrera.ImprimirPilotosCarrera();
                     break;
                 case 124:
                     return;
