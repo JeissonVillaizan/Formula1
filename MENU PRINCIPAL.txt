@@ -1,0 +1,70 @@
+MENÚ PRINCIPAL DE FÓRMULA 1
+│
+├── 1. CONSULTAR POR CARRERAS
+│   ├── 11. LISTAR CARRERAS
+│   │   └── Muestra: "LLAMAR LISTAR CARRERAS"
+│   │
+│   ├── 12. SELECCIONAR CARRERA
+│   │   ├── 121. IMPRIMIR INFORMACIÓN DEL CIRCUITO
+│   │   │   └── Muestra: "LLAMAR IMPRIMIR INFORMACION DEL CIRCUITO"
+│   │   │
+│   │   ├── 122. IMPRIMIR INFORMACIÓN DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA
+│   │   │   └── Muestra: "LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA"
+│   │   │
+│   │   ├── 123. IMPRIMIR INFORMACIÓN DEL MUNDIAL DE PILOTOS EN ESTA CARRERA
+│   │   │   └── Muestra: "LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA"
+│   │   │
+│   │   ├── 124. VOLVER MENÚ DE CARRERAS
+│   │   │   └── Retorna al menú de carreras
+│   │   │
+│   │   └── 125. VOLVER MENÚ PRINCIPAL
+│   │       └── Retorna al menú principal
+│   │
+│   └── 13. VOLVER MENÚ PRINCIPAL
+│       └── Retorna al menú principal
+│
+├── 2. CONSULTAR POR PILOTOS
+│   ├── 21. LISTAR PILOTOS
+│   │   └── Muestra: "LLAMAR LISTAR CARRERAS" [ERROR: debería ser "LLAMAR LISTAR PILOTOS"]
+│   │
+│   ├── 22. SELECCIONAR PILOTO
+│   │   ├── 221. IMPRIMIR INFORMACIÓN DEL PILOTO
+│   │   │   └── Muestra: "LLAMAR IMPRIMIR INFORMACION DEL PILOTO"
+│   │   │
+│   │   ├── 222. IMPRIMIR INFORMACIÓN DEL MUNDIAL DE PILOTOS PARA ESTE PILOTO
+│   │   │   └── Muestra: "LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA ESTE PILOTO"
+│   │   │
+│   │   ├── 223. VOLVER MENÚ DE PILOTOS
+│   │   │   └── Retorna al menú de pilotos
+│   │   │
+│   │   └── 224. VOLVER MENÚ PRINCIPAL
+│   │       └── Retorna al menú principal
+│   │
+│   └── 23. VOLVER MENÚ PRINCIPAL
+│       └── Retorna al menú principal y lo muestra de nuevo (llama a menuPrincipal())
+│
+├── 3. CONSULTAR POR ESCUDERÍAS
+│   ├── 31. LISTAR ESCUDERÍAS
+│   │   └── Muestra: "LLAMAR LISTAR ESCUDERIA"
+│   │
+│   ├── 32. SELECCIONAR ESCUDERÍA
+│   │   ├── 321. IMPRIMIR INFORMACIÓN DE LA ESCUDERÍA
+│   │   │   └── Muestra: "LLAMAR IMPRIMIR INFORMACION DE LA ESCUDERIA"
+│   │   │
+│   │   ├── 322. IMPRIMIR INFORMACIÓN DEL MUNDIAL DE CONSTRUCTORES PARA ESTA ESCUDERÍA
+│   │   │   └── Muestra: "LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES PARA ESTA ESCUDERIA"
+│   │   │
+│   │   ├── 323. IMPRIMIR INFORMACIÓN DEL MUNDIAL DE PILOTOS PARA LOS PILOTOS DE ESTA ESCUDERÍA
+│   │   │   └── Muestra: "LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA LOS PILOTOS DE ESTE ESCUDERIA"
+│   │   │
+│   │   ├── 324. VOLVER MENÚ DE ESCUDERÍAS
+│   │   │   └── Retorna al menú de escuderías
+│   │   │
+│   │   └── 325. VOLVER MENÚ PRINCIPAL
+│   │       └── Retorna al menú principal [ERROR: condición de salida incorrecta, usa opcion != 124]
+│   │
+│   └── 33. VOLVER MENÚ PRINCIPAL
+│       └── Muestra: "RETORNANDO AL MENU PRINCIPAL" y llama a menuPrincipal()
+│
+└── 4. SALIR DEL SISTEMA
+    └── Termina la ejecución del programa

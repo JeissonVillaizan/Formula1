@@ -76,6 +76,14 @@ public class ImprimirInformacionCircuito {
     }
     
     /**
+     * Método estático principal que permite seleccionar e imprimir la información de un circuito.
+     */
+    public static void ImprimirInformacionCircuito() {
+        ImprimirInformacionCircuito imprimir = new ImprimirInformacionCircuito();
+        imprimir.seleccionarEImprimirCircuito();
+    }
+    
+    /**
      * Permite al usuario seleccionar un circuito y muestra su información.
      */
     public void seleccionarEImprimirCircuito() {
