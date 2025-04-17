@@ -10,6 +10,7 @@ import static edu.ucompensar.Banner.bannerMenuPilotos;
 import static edu.ucompensar.Banner.bannerSeleccionCarrera;
 import static edu.ucompensar.Banner.bannerSeleccionPiloto;
 import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
+import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
 
 public class Menu {
