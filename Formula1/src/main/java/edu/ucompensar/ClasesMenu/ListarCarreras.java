@@ -94,19 +94,5 @@ public class ListarCarreras {
         System.out.println("\n===================================================\n");
     }
     
-    /**
-     * Devuelve la lista de nombres de circuitos.
-     * @return Lista de nombres de circuitos
-     */
-    public List<String> getNombreCircuitos() {
-        return nombreCircuitos;
-    }
-    
-    /**
-     * Devuelve la lista de países/localidades de circuitos.
-     * @return Lista de países/localidades de circuitos
-     */
-    public List<String> getPaisesCircuitos() {
-        return paisesCircuitos;
-    }
+
 }
