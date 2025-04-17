@@ -104,12 +104,15 @@ public class Menu {
             switch (opcion) {
                 case 121:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL CIRCUITO");
+                    //ImprimirInformacionCircuito.ImprimirInformacionCircuito();
                     break;
                 case 122:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA ");
+                    //ImprimirConstructoresCarrera.ImprimirConstructoresCarrera();
                     break;
                 case 123:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");
+                    //ImprimirPilotosCarrera.ImprimirPilotosCarrera();
                     break;
                 case 124:
                     return;
@@ -143,6 +146,7 @@ public class Menu {
             switch (opcion) {
                 case 21:
                     System.out.println("LLAMAR LISTAR CARRERAS");
+                    //ListarPilotos.ListarPilotos();
                     break;
                 case 22:
                     menuSeleccionarPiloto();
@@ -174,9 +178,11 @@ public class Menu {
             switch (opcion) {
                 case 221:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL PILOTO");
+                    //ImprimirInformacionPiloto.ImprimirInformacionPiloto();
                     break;
                 case 222:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA ESTE PILOTO");
+                    //ImprimirPilotosPiloto.ImprimirPilotosPiloto();
                     break;
                 case 223:
                     this.menuPilotos();
@@ -206,6 +212,7 @@ public class Menu {
             switch (opcion) {
                 case 31:
                     System.out.println("LLAMAR LISTAR ESCUDERIA");
+                    //ListarEscuderia.ListarEscuderia();
                     break;
                 case 32:
                     menuSeleccionarEscuderia();
@@ -239,12 +246,15 @@ public class Menu {
             switch (opcion) {
                 case 321:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DE LA ESCUDERIA");
+                    //ImprimirInformacionEscuderia.ImprimirInformacionEscuderia();
                     break;
                 case 322:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES PARA ESTA ESCUDERIA");
+                    //ImprimirConstructoresEscuderia.ImprimirConstructoresEscuderia();
                     break;
                 case 323:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA LOS PILOTOS DE ESTE ESCUDERIA");
+                    //ImprimirPilotosEscuderia.ImprimirPilotosEscuderia();
                     break;
                 case 324:
                     this.menuEscuderias();
