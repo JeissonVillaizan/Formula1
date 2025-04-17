@@ -12,8 +12,11 @@ import static edu.ucompensar.Banner.bannerSeleccionPiloto;
 import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirConstructoresCarrera;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
+import edu.ucompensar.ClasesMenu.ImprimirInformacionEscuderia;
+import edu.ucompensar.ClasesMenu.ImprimirInformacionPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirPilotosCarrera;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
+import edu.ucompensar.ClasesMenu.ListarEscuderia;
 import edu.ucompensar.ClasesMenu.ListarPilotos;
 
 public class Menu {
@@ -182,7 +185,7 @@ public class Menu {
             switch (opcion) {
                 case 221:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL PILOTO");
-                    //ImprimirInformacionPiloto.ImprimirInformacionPiloto();
+                    ImprimirInformacionPiloto.ImprimirInformacionPiloto();
                     break;
                 case 222:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA ESTE PILOTO");
@@ -215,8 +218,8 @@ public class Menu {
             this.opcion = scanner.nextInt();
             switch (opcion) {
                 case 31:
-                    System.out.println("LLAMAR LISTAR ESCUDERIA");
-                    //ListarEscuderia.ListarEscuderia();
+                    System.out.println("LLAMAR LISTAR ESCUDERIAS");
+                    ListarEscuderia.listarEscuderias(); // Llamar al método estático correcto
                     break;
                 case 32:
                     menuSeleccionarEscuderia();
@@ -250,7 +253,7 @@ public class Menu {
             switch (opcion) {
                 case 321:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DE LA ESCUDERIA");
-                    //ImprimirInformacionEscuderia.ImprimirInformacionEscuderia();
+                    ImprimirInformacionEscuderia.ImprimirInformacionEscuderia();
                     break;
                 case 322:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES PARA ESTA ESCUDERIA");
