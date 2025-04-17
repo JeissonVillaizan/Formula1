@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -75,11 +76,16 @@ public class ImprimirInformacionCircuito {
     }
     
     /**
-     * Método estático que muestra todos los circuitos disponibles.
+     * Permite al usuario seleccionar un circuito y muestra su información.
      */
-    public static void ImprimirInformacionCircuito() {
-        ImprimirInformacionCircuito listaCarreras = new ImprimirInformacionCircuito();
-        listaCarreras.mostrarCircuitos();
+    public void seleccionarEImprimirCircuito() {
+        Scanner scanner = new Scanner(System.in);
+        mostrarCircuitos(); // Mostrar la lista de circuitos disponibles
+        
+        System.out.print("Seleccione el número del circuito: ");
+        int seleccion = scanner.nextInt(); // Leer la selección del usuario
+        
+        mostrarInformacionCircuito(seleccion); // Mostrar la información del circuito seleccionado
     }
     
     /**
