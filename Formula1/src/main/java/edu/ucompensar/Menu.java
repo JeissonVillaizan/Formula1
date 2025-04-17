@@ -2,9 +2,14 @@ package edu.ucompensar;
 
 import java.util.Scanner;
 
-import edu.ucompensar.ClasesMenu.ListarCarreras;
-
-import static edu.ucompensar.Banner.*;
+import static edu.ucompensar.Banner.banner2;
+import static edu.ucompensar.Banner.banner4;
+import static edu.ucompensar.Banner.bannerMenuCarreras;
+import static edu.ucompensar.Banner.bannerMenuEscuderias;
+import static edu.ucompensar.Banner.bannerMenuPilotos;
+import static edu.ucompensar.Banner.bannerSeleccionCarrera;
+import static edu.ucompensar.Banner.bannerSeleccionPiloto;
+import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
 
 public class Menu {
 

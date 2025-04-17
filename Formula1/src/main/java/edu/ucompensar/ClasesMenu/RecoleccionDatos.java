@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ListarCarreras {
+public class RecoleccionDatos {
     
     // Ruta donde se guardarán los archivos JSON
     private static final String DIRECTORIO_DATOS = "datos_f1";
