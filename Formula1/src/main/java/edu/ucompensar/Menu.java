@@ -16,6 +16,7 @@ import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirPilotosEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionPiloto;
+import edu.ucompensar.ClasesMenu.ImprimirMundialPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirPilotosCarrera;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
 import edu.ucompensar.ClasesMenu.ListarEscuderia;
@@ -191,7 +192,7 @@ public class Menu {
                     break;
                 case 222:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA ESTE PILOTO");
-                    //ImprimirPilotosPiloto.ImprimirPilotosPiloto();
+                    ImprimirMundialPiloto.ImprimirMundialPiloto();
                     break;
                 case 223:
                     this.menuPilotos();
@@ -221,7 +222,7 @@ public class Menu {
             switch (opcion) {
                 case 31:
                     System.out.println("LLAMAR LISTAR ESCUDERIAS");
-                    ListarEscuderia.listarEscuderias(); // Llamar al método estático correcto
+                    ListarEscuderia.listarEscuderias(); 
                     break;
                 case 32:
                     menuSeleccionarEscuderia();
