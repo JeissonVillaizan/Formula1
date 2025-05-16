@@ -11,8 +11,10 @@ import static edu.ucompensar.Banner.bannerSeleccionCarrera;
 import static edu.ucompensar.Banner.bannerSeleccionPiloto;
 import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirConstructoresCarrera;
+import edu.ucompensar.ClasesMenu.ImprimirConstructoresEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionEscuderia;
+import edu.ucompensar.ClasesMenu.ImprimirPilotosEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirMundialPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirPilotosCarrera;
@@ -258,11 +260,11 @@ public class Menu {
                     break;
                 case 322:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES PARA ESTA ESCUDERIA");
-                    //ImprimirConstructoresEscuderia.ImprimirConstructoresEscuderia();
+                    ImprimirConstructoresEscuderia.ImprimirConstructoresEscuderia();
                     break;
                 case 323:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA LOS PILOTOS DE ESTE ESCUDERIA");
-                    //ImprimirPilotosEscuderia.ImprimirPilotosEscuderia();
+                    ImprimirPilotosEscuderia.ImprimirPilotosEscuderia();
                     break;
                 case 324:
                     this.menuEscuderias();
