@@ -1,4 +1,4 @@
-package edu.ucompensar.ClasesMenu;
+package edu.ucompensar.API;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,14 +7,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+/**
+ * Clase para recolectar y guardar datos de APIs relacionadas con Fórmula 1
+ */
 public class RecoleccionDatos {
     
     // Ruta donde se guardarán los archivos JSON
-    private static final String DIRECTORIO_DATOS = "datos_f1";
-    
+    public static final String DIRECTORIO_DATOS = "datos_f1";
     
     /**
      * Método para guardar datos de una API específica
+     * Verifica si el archivo existe antes de hacer la petición
+     * 
      * @param urlApi URL de la API a consultar
      * @param nombreArchivo Nombre del archivo donde se guardarán los datos
      */
@@ -27,60 +34,51 @@ public class RecoleccionDatos {
                 System.out.println("Directorio creado: " + directorio.getAbsolutePath());
             }
             
+            // Comprobar si el archivo ya existe
             File archivo = new File(directorio, nombreArchivo);
-            
-            // Verificar si el archivo ya existe
             if (archivo.exists()) {
-                System.out.println("El archivo " + archivo.getAbsolutePath() + " ya existe.");
-                System.out.println("Usando datos guardados previamente.");
-                return; // Salir del método si el archivo ya existe
+                System.out.println("Usando archivo existente: " + archivo.getAbsolutePath());
+                return;
             }
             
-            // Crear la URL para la API
+            // Si no existe, hacer petición a la API
             URL url = new URL(urlApi);
-            
-            // Abrir conexión HTTP
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            
-            // Configurar método de petición
             conn.setRequestMethod("GET");
             
-            // Verificar si la conexión fue exitosa
             int responseCode = conn.getResponseCode();
             System.out.println("Código de respuesta para " + nombreArchivo + ": " + responseCode);
             
-            // Leer la respuesta si fue exitosa (código 200)
             if (responseCode == 200) {
+                // Leer respuesta
                 BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                String line;
                 StringBuilder response = new StringBuilder();
+                String line;
                 
                 while ((line = reader.readLine()) != null) {
                     response.append(line);
                 }
                 reader.close();
                 
-                // Guardar la respuesta completa en un archivo JSON
+                // Formatear JSON para mejor legibilidad
                 String jsonResponse = response.toString();
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode jsonNode = mapper.readTree(jsonResponse);
+                String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
                 
+                // Guardar respuesta en archivo
                 try (FileWriter fileWriter = new FileWriter(archivo)) {
-                    fileWriter.write(jsonResponse);
+                    fileWriter.write(prettyJson);
                 }
                 
                 System.out.println("Datos guardados exitosamente en: " + archivo.getAbsolutePath());
-                System.out.println("Tamaño del archivo: " + archivo.length() + " bytes");
-                
             } else {
-                System.out.println("Error al conectar con la API para " + nombreArchivo + ". Código: " + responseCode);
+                System.out.println("Error al conectar con la API: " + responseCode);
             }
-            
-            // Cerrar la conexión
-            conn.disconnect();
             
         } catch (Exception e) {
             System.out.println("Error al guardar " + nombreArchivo + ": " + e.getMessage());
             e.printStackTrace();
         }
     }
-    
 }

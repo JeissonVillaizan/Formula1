@@ -12,6 +12,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import edu.ucompensar.API.RecoleccionDatos;
+
 public class ImprimirPilotosCarrera {
     
     private static final String CIRCUITOS_FILE = "datos_f1/circuitos_f1_2024.json";

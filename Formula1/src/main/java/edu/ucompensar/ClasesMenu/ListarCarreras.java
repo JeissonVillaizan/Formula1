@@ -1,65 +1,42 @@
 package edu.ucompensar.ClasesMenu;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import edu.ucompensar.datamanagers.CircuitosDataManager;
+import edu.ucompensar.model.Circuito;
 
 public class ListarCarreras {
     
-    private static final String CIRCUITOS_FILE = "datos_f1/circuitos_f1_2024.json";
     private List<String> nombreCircuitos;
     private List<String> paisesCircuitos;
     
     /**
-     * Constructor que carga los datos de los circuitos desde el archivo JSON.
+     * Constructor que carga los datos de los circuitos desde el CircuitosDataManager.
      */
     public ListarCarreras() {
         cargarCircuitos();
     }
     
     /**
-     * Carga los datos de los circuitos desde el archivo JSON.
+     * Carga los datos de los circuitos desde el CircuitosDataManager.
      */
     private void cargarCircuitos() {
         nombreCircuitos = new ArrayList<>();
         paisesCircuitos = new ArrayList<>();
         
-        try (Reader reader = new FileReader(CIRCUITOS_FILE)) {
-            // Parsear el JSON usando Gson
-            Gson gson = new Gson();
-            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-            
-            // Navegar por la estructura JSON para obtener los circuitos
-            JsonObject mrData = jsonObject.getAsJsonObject("MRData");
-            JsonObject circuitTable = mrData.getAsJsonObject("CircuitTable");
-            JsonArray circuits = circuitTable.getAsJsonArray("Circuits");
-            
-            // Recorrer todos los circuitos y guardar sus nombres
-            for (JsonElement circuit : circuits) {
-                JsonObject circuitObj = circuit.getAsJsonObject();
-                String circuitName = circuitObj.get("circuitName").getAsString();
-                
-                JsonObject location = circuitObj.getAsJsonObject("Location");
-                String country = location.get("country").getAsString();
-                String locality = location.get("locality").getAsString();
-                
-                nombreCircuitos.add(circuitName);
-                paisesCircuitos.add(locality + ", " + country);
-            }
-            
-            System.out.println("Se han cargado " + nombreCircuitos.size() + " circuitos.");
-            
-        } catch (IOException e) {
-            System.err.println("Error al cargar los datos de circuitos: " + e.getMessage());
-            e.printStackTrace();
+        // Obtener la instancia del gestor de datos de circuitos
+        CircuitosDataManager circuitosManager = CircuitosDataManager.getInstance();
+        List<Circuito> circuitos = circuitosManager.getCircuitos();
+        
+        // Recorrer todos los circuitos y guardar sus datos
+        for (Circuito circuito : circuitos) {
+            nombreCircuitos.add(circuito.getCircuitName());
+            paisesCircuitos.add(circuito.getCountry());
         }
+        
+        System.out.println("Se han cargado " + nombreCircuitos.size() + " circuitos.");
     }
     
     /**
@@ -92,7 +69,10 @@ public class ListarCarreras {
         }
         
         System.out.println("\n===================================================\n");
+        
+        // Agregar la pausa para continuar
+        System.out.println("Presione Enter para continuar...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
     }
-    
-
 }

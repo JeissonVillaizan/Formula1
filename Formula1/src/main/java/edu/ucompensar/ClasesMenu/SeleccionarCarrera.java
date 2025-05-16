@@ -1,16 +1,11 @@
 package edu.ucompensar.ClasesMenu;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import edu.ucompensar.datamanagers.CircuitosDataManager;
+import edu.ucompensar.model.Circuito;
 
 /**
  * Clase que permite seleccionar una carrera de la temporada 2024 de F1.
@@ -18,8 +13,6 @@ import com.google.gson.JsonObject;
  */
 public class SeleccionarCarrera {
     
-    private static final String CIRCUITOS_FILE = "datos_f1/circuitos_f1_2024.json";
-    private static final String SEASON = "2024";
     
     private List<String> nombreCircuitos;
     private List<String> idCircuitos;
@@ -27,59 +20,39 @@ public class SeleccionarCarrera {
     private static String carreraSeleccionada;
     
     /**
-     * Constructor que carga los datos de los circuitos desde el archivo JSON.
+     * Constructor que carga los datos de los circuitos desde el CircuitosDataManager.
      */
     public SeleccionarCarrera() {
         cargarCircuitos();
     }
     
     /**
-     * Carga los datos de los circuitos desde el archivo JSON.
+     * Carga los datos de los circuitos desde el CircuitosDataManager.
      */
     private void cargarCircuitos() {
         nombreCircuitos = new ArrayList<>();
         idCircuitos = new ArrayList<>();
         paisesCircuitos = new ArrayList<>();
         
-        try (Reader reader = new FileReader(CIRCUITOS_FILE)) {
-            // Parsear el JSON usando Gson
-            Gson gson = new Gson();
-            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-            
-            // Navegar por la estructura JSON para obtener los circuitos
-            JsonObject mrData = jsonObject.getAsJsonObject("MRData");
-            JsonObject circuitTable = mrData.getAsJsonObject("CircuitTable");
-            JsonArray circuits = circuitTable.getAsJsonArray("Circuits");
-            
-            // Recorrer todos los circuitos y guardar sus datos
-            for (JsonElement circuit : circuits) {
-                JsonObject circuitObj = circuit.getAsJsonObject();
-                String circuitName = circuitObj.get("circuitName").getAsString();
-                String circuitId = circuitObj.get("circuitId").getAsString();
-                
-                JsonObject location = circuitObj.getAsJsonObject("Location");
-                String country = location.get("country").getAsString();
-                String locality = location.get("locality").getAsString();
-                
-                nombreCircuitos.add(circuitName);
-                idCircuitos.add(circuitId);
-                paisesCircuitos.add(locality + ", " + country);
-            }
-            
-        } catch (IOException e) {
-            System.err.println("Error al cargar los datos de circuitos: " + e.getMessage());
+        // Obtener la instancia del gestor de datos de circuitos
+        CircuitosDataManager circuitosManager = CircuitosDataManager.getInstance();
+        List<Circuito> circuitos = circuitosManager.getCircuitos();
+        
+        // Recorrer todos los circuitos y guardar sus datos
+        for (Circuito circuito : circuitos) {
+            nombreCircuitos.add(circuito.getCircuitName());
+            idCircuitos.add(circuito.getCircuitId());
+            paisesCircuitos.add(circuito.getCountry());
         }
     }
     
     /**
      * Muestra la lista de circuitos y permite al usuario seleccionar uno.
      * 
-     * @return El nombre de la carrera seleccionada o null si hubo un error
+     * @return El ID del circuito seleccionado o null si hubo un error
      */
     public String seleccionarCarrera() {
         mostrarCircuitos();
-        
-
         
         Scanner scanner = new Scanner(System.in);
         int seleccion = -1;
@@ -98,12 +71,14 @@ public class SeleccionarCarrera {
         }
         
         // Obtener la carrera seleccionada (índice base 0)
-        carreraSeleccionada = nombreCircuitos.get(seleccion - 1);
+        int index = seleccion - 1;
+        carreraSeleccionada = nombreCircuitos.get(index);
+        String circuitoId = idCircuitos.get(index);
         
         System.out.println("\nHa seleccionado: " + carreraSeleccionada + 
-                          " (" + paisesCircuitos.get(seleccion - 1) + ")");
+                          " (" + paisesCircuitos.get(index) + ")");
         
-        return carreraSeleccionada;
+        return circuitoId;
     }
     
     /**
@@ -160,7 +135,7 @@ public class SeleccionarCarrera {
     /**
      * Método estático para obtener una instancia y seleccionar una carrera.
      * 
-     * @return El nombre de la carrera seleccionada
+     * @return El ID del circuito seleccionado
      */
     public static String seleccionarCarreraStatic() {
         SeleccionarCarrera selector = new SeleccionarCarrera();

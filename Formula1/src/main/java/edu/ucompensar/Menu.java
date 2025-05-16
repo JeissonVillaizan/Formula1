@@ -12,6 +12,7 @@ import static edu.ucompensar.Banner.bannerSeleccionPiloto;
 import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirConstructoresCarrera;
 import edu.ucompensar.ClasesMenu.ImprimirConstructoresEscuderia;
+import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirMundialPiloto;
@@ -21,7 +22,6 @@ import edu.ucompensar.ClasesMenu.ListarCarreras;
 import edu.ucompensar.ClasesMenu.ListarEscuderia;
 import edu.ucompensar.ClasesMenu.ListarPilotos;
 import edu.ucompensar.ClasesMenu.SeleccionarCarrera;
-
 public class Menu {
 
     private int opcion =0;
@@ -78,7 +78,7 @@ public class Menu {
             this.opcion = scanner.nextInt();
             switch (opcion) {
                 case 11:
-                    System.out.println("LLAMAR LISTAR CARRERAS");
+                    System.out.println("LLAMAR LISTAR CARRERAS"); //Completado
                     ListarCarreras.ListarCarreras();
                     break;
                 case 12:
@@ -98,8 +98,9 @@ public class Menu {
     public void menuSeleccionarCarrera(){
         this.opcion = 0;
             limpiarPantalla();
-            do{
             String carreraSeleccionada = SeleccionarCarrera.seleccionarCarreraStatic();
+            limpiarPantalla();
+            do{
             System.out.println(banner4);
             System.out.println(bannerSeleccionCarrera);
             System.out.println();
@@ -118,8 +119,7 @@ public class Menu {
 
             switch (opcion) {
                 case 121:
-                    System.out.println("LLAMAR IMPRIMIR INFORMACION DEL CIRCUITO" + carreraSeleccionada );
-                    //ImprimirInformacionCircuito.ImprimirInformacionCircuito(carreraSeleccionada);
+                    ImprimirInformacionCircuito.ImprimirInformacionCircuito(carreraSeleccionada);
                     break;
                 case 122:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA ");
