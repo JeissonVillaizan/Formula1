@@ -7,13 +7,14 @@ import java.time.LocalDate;
  * Almacena la información relevante sobre un circuito y su carrera.
  */
 public class Circuito {
+    private String circuitId;         // ID del circuito 
     private String circuitName;       // Nombre del circuito
     private LocalDate fechaCarrera;   // Fecha de la carrera principal
     private LocalDate fechaSprint;    // Fecha de la carrera sprint (puede ser null)
     private String country;           // País donde se encuentra el circuito
     private int numeroVueltas;        // Número de vueltas
     private double longitud;          // Longitud del circuito en kilómetros
-    
+
     /**
      * Constructor por defecto.
      */
@@ -60,7 +61,13 @@ public class Circuito {
     }
     
     // Getters y Setters
+    public String getCircuitId() {
+        return circuitId;
+    }
     
+    public void setCircuitId(String circuitId) {
+        this.circuitId = circuitId;
+    }
     public String getCircuitName() {
         return circuitName;
     }
@@ -129,18 +136,5 @@ public class Circuito {
      */
     public double getDistanciaTotal() {
         return longitud * numeroVueltas;
-    }
-    
-    @Override
-    public String toString() {
-        String sprintInfo = tieneSprint() ? "Sí, el " + fechaSprint : "No";
-        
-        return "Circuito: " + circuitName + 
-               "\nPaís: " + country + 
-               "\nFecha de carrera: " + fechaCarrera + 
-               "\nCarrera sprint: " + sprintInfo + 
-               "\nNúmero de vueltas: " + numeroVueltas + 
-               "\nLongitud: " + longitud + " km" +
-               "\nDistancia total: " + getDistanciaTotal() + " km";
     }
 }

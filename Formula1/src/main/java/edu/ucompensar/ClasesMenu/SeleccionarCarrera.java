@@ -76,12 +76,13 @@ public class SeleccionarCarrera {
      * 
      * @return El nombre de la carrera seleccionada o null si hubo un error
      */
-    public int seleccionarCarrera() {
+    public String seleccionarCarrera() {
         mostrarCircuitos();
         
+
         
         Scanner scanner = new Scanner(System.in);
-        int seleccion = -1; 
+        int seleccion = -1;
         
         while (seleccion < 1 || seleccion > nombreCircuitos.size()) {
             System.out.print("\nSeleccione un circuito (1-" + nombreCircuitos.size() + "): ");
@@ -96,15 +97,15 @@ public class SeleccionarCarrera {
             }
         }
         
-
-        System.out.println("\nHa seleccionado la opcion : " + seleccion);
+        // Obtener la carrera seleccionada (índice base 0)
+        carreraSeleccionada = nombreCircuitos.get(seleccion - 1);
         
-        return seleccion;
+        System.out.println("\nHa seleccionado: " + carreraSeleccionada + 
+                          " (" + paisesCircuitos.get(seleccion - 1) + ")");
+        
+        return carreraSeleccionada;
     }
     
-
-
-
     /**
      * Muestra la lista de circuitos con su número correspondiente.
      */
@@ -161,7 +162,7 @@ public class SeleccionarCarrera {
      * 
      * @return El nombre de la carrera seleccionada
      */
-    public static int seleccionarCarreraStatic() {
+    public static String seleccionarCarreraStatic() {
         SeleccionarCarrera selector = new SeleccionarCarrera();
         return selector.seleccionarCarrera();
     }

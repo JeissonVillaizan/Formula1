@@ -1,142 +1,45 @@
 package edu.ucompensar.ClasesMenu;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import edu.ucompensar.datamanagers.CircuitosDataManager;
+import edu.ucompensar.model.Circuito;
 
+/**
+ * Clase para mostrar información de un circuito.
+ */
 public class ImprimirInformacionCircuito {
     
-    private static final String CIRCUITOS_FILE = "datos_f1/circuitos_f1_2024.json";
-    private List<String> nombreCircuitos;
-    private List<String> paisesCircuitos;
-    private List<String> latitudes;
-    private List<String> longitudes;
-    private List<String> urls;
-    
     /**
-     * Constructor que carga los datos de los circuitos desde el archivo JSON.
+     * Método estático para imprimir información de un circuito por su ID.
+     * 
+     * @param circuitId ID del circuito
      */
-    public ImprimirInformacionCircuito() {
-        cargarCircuitos();
-    }
-    
-    /**
-     * Carga los datos de los circuitos desde el archivo JSON.
-     */
-    private void cargarCircuitos() {
-        nombreCircuitos = new ArrayList<>();
-        paisesCircuitos = new ArrayList<>();
-        latitudes = new ArrayList<>();
-        longitudes = new ArrayList<>();
-        urls = new ArrayList<>();
+    public static void ImprimirInformacionCircuito(String circuitId) {
+        // Obtener el gestor de datos
+        CircuitosDataManager manager = CircuitosDataManager.getInstance();
         
-        try (Reader reader = new FileReader(CIRCUITOS_FILE)) {
-            // Parsear el JSON usando Gson
-            Gson gson = new Gson();
-            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+        // Obtener el circuito usando el ID proporcionado
+        Circuito circuito = manager.getCircuitoPorId(circuitId);
+        
+        if (circuito != null) {
+            // Mostrar la información del circuito específico
+            System.out.println("\n===== INFORMACIÓN DEL CIRCUITO =====");
+            System.out.println("ID: " + circuito.getCircuitId());
+            System.out.println("Nombre: " + circuito.getCircuitName());
+            System.out.println("Ubicación: " + circuito.getCountry());
+            System.out.println("Fecha de carrera: " + (circuito.getFechaCarrera() != null ? circuito.getFechaCarrera() : "No disponible"));
+            System.out.println("Carrera sprint: " + (circuito.tieneSprint() ? "Sí, el " + circuito.getFechaSprint() : "No"));
+            System.out.println("Número de vueltas: " + circuito.getNumeroVueltas());
+            System.out.println("Longitud: " + circuito.getLongitud() + " km");
+            System.out.println("Distancia total: " + circuito.getDistanciaTotal() + " km");
+            System.out.println("====================================\n");
             
-            // Navegar por la estructura JSON para obtener los circuitos
-            JsonObject mrData = jsonObject.getAsJsonObject("MRData");
-            JsonObject circuitTable = mrData.getAsJsonObject("CircuitTable");
-            JsonArray circuits = circuitTable.getAsJsonArray("Circuits");
-            
-            // Recorrer todos los circuitos y guardar sus datos
-            for (JsonElement circuit : circuits) {
-                JsonObject circuitObj = circuit.getAsJsonObject();
-                String circuitName = circuitObj.get("circuitName").getAsString();
-                
-                JsonObject location = circuitObj.getAsJsonObject("Location");
-                String country = location.get("country").getAsString();
-                String locality = location.get("locality").getAsString();
-                String latitude = location.get("lat").getAsString();
-                String longitude = location.get("long").getAsString();
-                String url = circuitObj.get("url").getAsString();
-                
-                nombreCircuitos.add(circuitName);
-                paisesCircuitos.add(locality + ", " + country);
-                latitudes.add(latitude);
-                longitudes.add(longitude);
-                urls.add(url);
-            }
-            
-            System.out.println("Se han cargado " + nombreCircuitos.size() + " circuitos.");
-            
-        } catch (IOException e) {
-            System.err.println("Error al cargar los datos de circuitos: " + e.getMessage());
-            e.printStackTrace();
+            // Esperar para que el usuario pueda leer la información
+            System.out.println("Presione Enter para continuar...");
+            new Scanner(System.in).nextLine();
+        } else {
+            System.out.println("No se encontró información para el circuito con ID: " + circuitId);
         }
-    }
-    
-    /**
-     * Método estático principal que permite seleccionar e imprimir la información de un circuito.
-     */
-    public static void ImprimirInformacionCircuito() {
-        ImprimirInformacionCircuito imprimir = new ImprimirInformacionCircuito();
-        imprimir.seleccionarEImprimirCircuito();
-    }
-    
-    /**
-     * Permite al usuario seleccionar un circuito y muestra su información.
-     */
-    public void seleccionarEImprimirCircuito() {
-        Scanner scanner = new Scanner(System.in);
-        mostrarCircuitos(); // Mostrar la lista de circuitos disponibles
-        
-        System.out.print("Seleccione el número del circuito: ");
-        int seleccion = scanner.nextInt(); // Leer la selección del usuario
-        
-        mostrarInformacionCircuito(seleccion); // Mostrar la información del circuito seleccionado
-    }
-    
-    /**
-     * Muestra la lista de circuitos con su número correspondiente.
-     */
-    public void mostrarCircuitos() {
-        System.out.println("\n===== CARRERAS FORMULA 1 - TEMPORADA 2024 =====\n");
-        
-        if (nombreCircuitos.isEmpty()) {
-            System.out.println("No se encontraron circuitos para mostrar.");
-            return;
-        }
-        
-        System.out.printf("%-3s %-45s %-25s\n", "N°", "NOMBRE DEL CIRCUITO", "UBICACIÓN");
-        System.out.println("-------------------------------------------------------------------------------------");
-        
-        for (int i = 0; i < nombreCircuitos.size(); i++) {
-            System.out.printf("%-3d %-45s %-25s\n", 
-                (i + 1), 
-                nombreCircuitos.get(i), 
-                paisesCircuitos.get(i));
-        }
-        
-        System.out.println("\n===================================================\n");
-    }
-    
-    /**
-     * Muestra la información detallada de un circuito seleccionado.
-     * @param indice Índice del circuito seleccionado (basado en 1).
-     */
-    public void mostrarInformacionCircuito(int indice) {
-        if (indice < 1 || indice > nombreCircuitos.size()) {
-            System.out.println("Índice inválido. Por favor, seleccione un circuito válido.");
-            return;
-        }
-        
-        int i = indice - 1; // Convertir a índice basado en 0
-        System.out.println("\n===== INFORMACIÓN DEL CIRCUITO =====");
-        System.out.println("Nombre: " + nombreCircuitos.get(i));
-        System.out.println("Ubicación: " + paisesCircuitos.get(i));
-        System.out.println("Latitud: " + latitudes.get(i));
-        System.out.println("Longitud: " + longitudes.get(i));
-        System.out.println("URL: " + urls.get(i));
-        System.out.println("====================================\n");
     }
 }

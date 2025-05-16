@@ -12,7 +12,6 @@ import static edu.ucompensar.Banner.bannerSeleccionPiloto;
 import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirConstructoresCarrera;
 import edu.ucompensar.ClasesMenu.ImprimirConstructoresEscuderia;
-import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirMundialPiloto;
@@ -100,7 +99,7 @@ public class Menu {
         this.opcion = 0;
             limpiarPantalla();
             do{
-            int carreraSeleccionada = SeleccionarCarrera.seleccionarCarreraStatic();
+            String carreraSeleccionada = SeleccionarCarrera.seleccionarCarreraStatic();
             System.out.println(banner4);
             System.out.println(bannerSeleccionCarrera);
             System.out.println();
@@ -109,7 +108,7 @@ public class Menu {
             System.out.println("Carrera seleccionada: " + carreraSeleccionada);
             
             
-            System.out.println("121. IMPRIMIR INFORMACION DEL CIRCUITO");
+            System.out.println("121. IMPRIMIR INFORMACION DEL CIRCUITO"); //Completado
             System.out.println("122. IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA");
             System.out.println("123. IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");
             System.out.println("124. VOLVER MENU DE CARRERAS");
@@ -119,8 +118,8 @@ public class Menu {
 
             switch (opcion) {
                 case 121:
-                    System.out.println("LLAMAR IMPRIMIR INFORMACION DEL CIRCUITO");
-                    ImprimirInformacionCircuito.ImprimirInformacionCircuito();
+                    System.out.println("LLAMAR IMPRIMIR INFORMACION DEL CIRCUITO" + carreraSeleccionada );
+                    //ImprimirInformacionCircuito.ImprimirInformacionCircuito(carreraSeleccionada);
                     break;
                 case 122:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA ");
