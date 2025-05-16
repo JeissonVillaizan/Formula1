@@ -14,13 +14,14 @@ import edu.ucompensar.ClasesMenu.ImprimirConstructoresCarrera;
 import edu.ucompensar.ClasesMenu.ImprimirConstructoresEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionEscuderia;
-import edu.ucompensar.ClasesMenu.ImprimirPilotosEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirMundialPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirPilotosCarrera;
+import edu.ucompensar.ClasesMenu.ImprimirPilotosEscuderia;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
 import edu.ucompensar.ClasesMenu.ListarEscuderia;
 import edu.ucompensar.ClasesMenu.ListarPilotos;
+import edu.ucompensar.ClasesMenu.SeleccionarCarrera;
 
 public class Menu {
 
@@ -96,13 +97,18 @@ public class Menu {
         // menuPrincipal();
     }
     public void menuSeleccionarCarrera(){
-        this.opcion =0;
-
-        do {
+        this.opcion = 0;
             limpiarPantalla();
+            do{
+            int carreraSeleccionada = SeleccionarCarrera.seleccionarCarreraStatic();
             System.out.println(banner4);
             System.out.println(bannerSeleccionCarrera);
             System.out.println();
+            
+            // Mostramos la carrera seleccionada
+            System.out.println("Carrera seleccionada: " + carreraSeleccionada);
+            
+            
             System.out.println("121. IMPRIMIR INFORMACION DEL CIRCUITO");
             System.out.println("122. IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA");
             System.out.println("123. IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");
@@ -127,17 +133,13 @@ public class Menu {
                 case 124:
                     return;
                     //menuCarreras();
-
-                // break;
                 case 125:
-
                     break;
                 default:
                     System.out.println("Opcion no valida REPITELA");
                     break;
             }
-        }while (this.opcion != 125);
-
+        } while (this.opcion != 125);
     }
 
     public void menuPilotos(){
@@ -275,7 +277,7 @@ public class Menu {
                     System.out.println("Opcion no valida REPITELA");
                     break;
             }
-        }while (this.opcion != 124);
+        }while (this.opcion != 325);
     }
 
     public static void limpiarPantalla() {
