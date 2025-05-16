@@ -15,7 +15,6 @@ import com.google.gson.JsonObject;
 public class ImprimirPilotosCarrera {
     
     private static final String CIRCUITOS_FILE = "datos_f1/circuitos_f1_2024.json";
-    private static final String PILOTOS_FILE = "datos_f1/conductores_f1_2024.json";
     private static final String SEASON = "2024";
     
     private List<String> nombreCircuitos;
