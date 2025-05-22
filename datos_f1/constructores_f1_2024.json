@@ -13,61 +13,101 @@
           "constructorId": "alpine",
           "url": "http://en.wikipedia.org/wiki/Alpine_F1_Team",
           "name": "Alpine F1 Team",
-          "nationality": "French"
+          "nationality": "French",
+          "teamPrincipal": "Flavio Briatore",
+          "championships": 2,
+          "points2024": 65,
+          "drivers": ["Pierre Gasly", "Esteban Ocon"]
         },
         {
           "constructorId": "aston_martin",
           "url": "http://en.wikipedia.org/wiki/Aston_Martin_in_Formula_One",
           "name": "Aston Martin",
-          "nationality": "British"
+          "nationality": "British",
+          "teamPrincipal": "Andy Cowell",
+          "championships": 0,
+          "points2024": 94,
+          "drivers": ["Fernando Alonso", "Lance Stroll"]
         },
         {
           "constructorId": "ferrari",
           "url": "http://en.wikipedia.org/wiki/Scuderia_Ferrari",
           "name": "Ferrari",
-          "nationality": "Italian"
+          "nationality": "Italian",
+          "teamPrincipal": "Frédéric Vasseur",
+          "championships": 16,
+          "points2024": 652,
+          "drivers": ["Charles Leclerc", "Carlos Sainz Jr."]
         },
         {
           "constructorId": "haas",
           "url": "http://en.wikipedia.org/wiki/Haas_F1_Team",
           "name": "Haas F1 Team",
-          "nationality": "American"
+          "nationality": "American",
+          "teamPrincipal": "Ayao Komatsu",
+          "championships": 0,
+          "points2024": 58,
+          "drivers": ["Kevin Magnussen", "Nico Hülkenberg"]
         },
         {
           "constructorId": "mclaren",
           "url": "http://en.wikipedia.org/wiki/McLaren",
           "name": "McLaren",
-          "nationality": "British"
+          "nationality": "British",
+          "teamPrincipal": "Andrea Stella",
+          "championships": 9,
+          "points2024": 666,
+          "drivers": ["Lando Norris", "Oscar Piastri"]
         },
         {
           "constructorId": "mercedes",
           "url": "http://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One",
           "name": "Mercedes",
-          "nationality": "German"
+          "nationality": "German",
+          "teamPrincipal": "Toto Wolff",
+          "championships": 8,
+          "points2024": 468,
+          "drivers": ["Lewis Hamilton", "George Russell"]
         },
         {
           "constructorId": "rb",
           "url": "http://en.wikipedia.org/wiki/RB_Formula_One_Team",
           "name": "RB F1 Team",
-          "nationality": "Italian"
+          "nationality": "Italian",
+          "teamPrincipal": "Laurent Mekies",
+          "championships": 0,
+          "points2024": 46,
+          "drivers": ["Yuki Tsunoda", "Daniel Ricciardo"]
         },
         {
           "constructorId": "red_bull",
           "url": "http://en.wikipedia.org/wiki/Red_Bull_Racing",
           "name": "Red Bull",
-          "nationality": "Austrian"
+          "nationality": "Austrian",
+          "teamPrincipal": "Christian Horner",
+          "championships": 6,
+          "points2024": 589,
+          "drivers": ["Max Verstappen", "Sergio Pérez"]
         },
         {
           "constructorId": "sauber",
           "url": "http://en.wikipedia.org/wiki/Sauber_Motorsport",
-          "name": "Sauber",
-          "nationality": "Swiss"
+          "name": "Kick Sauber",
+          "nationality": "Swiss",
+          "teamPrincipal": "Jonathan Wheatley",
+          "championships": 0,
+          "points2024": 4,
+          "drivers": ["Valtteri Bottas", "Zhou Guanyu"]
         },
         {
           "constructorId": "williams",
           "url": "http://en.wikipedia.org/wiki/Williams_Grand_Prix_Engineering",
           "name": "Williams",
-          "nationality": "British"
+          "nationality": "British",
+          "teamPrincipal": "James Vowles",
+          "championships": 9,
+          "points2024": 17,
+          "drivers": ["Alexander Albon", "Logan Sargeant"]
         }
       ]
     }
