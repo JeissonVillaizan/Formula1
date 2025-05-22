@@ -54,5 +54,23 @@ public class ResultadoCircuito {
         this.escuderiaPiloto = escuderiaPiloto;
     }
     
+ 
+    public Map<String, Double> getPuntuacionEscuderia() {
+        return puntuacionEscuderia;
+    }
+    
 
+    public void setPuntuacionEscuderia(Map<String, Double> puntuacionEscuderia) {
+        this.puntuacionEscuderia = puntuacionEscuderia;
+    }
+    
+
+    public Map<String, Integer> getPosicionEscuderia() {
+        return posicionEscuderia;
+    }
+    
+
+    public void setPosicionEscuderia(Map<String, Integer> posicionEscuderia) {
+        this.posicionEscuderia = posicionEscuderia;
+    }
 }

@@ -6,7 +6,7 @@ import java.io.File;
  * Clase para recolectar datos específicos de un equipo/constructor y sus resultados.
  * Se encarga únicamente de obtener y guardar el JSON de los resultados.
  */
-public class RecoleccionDatosEquipo {
+public class RecoleccionDatosResultadosEquipo {
     
     // Constantes para construir las URLs y rutas
     private static final String BASE_URL = "https://ergast.com/api/f1";

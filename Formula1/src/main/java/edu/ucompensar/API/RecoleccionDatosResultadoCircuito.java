@@ -6,7 +6,7 @@ import java.io.File;
  * Clase para recolectar datos específicos de un circuito y sus resultados.
  * Se encarga únicamente de obtener y guardar el JSON de los resultados.
  */
-public class RecoleccionDatosCircuito {
+public class RecoleccionDatosResultadoCircuito {
     
     // Constantes para construir las URLs y rutas
     private static final String BASE_URL = "https://ergast.com/api/f1";
@@ -22,7 +22,7 @@ public class RecoleccionDatosCircuito {
      */
     public static String obtenerResultadosCircuito(String circuitId) {
         // Construir nombre del archivo
-        String nombreArchivo = "circuito_" + circuitId + "_" + TEMPORADA_ACTUAL + ".json";
+        String nombreArchivo = "resultados_circuito_" + circuitId + "_" + TEMPORADA_ACTUAL + ".json";
         File archivo = new File(DIRECTORIO_DATOS, nombreArchivo);
         
         // Verificar si el archivo ya existe
