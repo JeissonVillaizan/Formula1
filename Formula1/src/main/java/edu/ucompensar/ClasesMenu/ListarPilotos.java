@@ -1,100 +1,60 @@
 package edu.ucompensar.ClasesMenu;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import edu.ucompensar.datamanagers.PilotosDataManager;
+import edu.ucompensar.model.Piloto;
 
+/**
+ * Clase para listar los pilotos de Fórmula 1.
+ */
 public class ListarPilotos {
     
-    private static final String PILOTOS_FILE = "datos_f1/conductores_f1_2024.json";
-    private List<String> nombrePilotos;
-    private List<String> nacionalidadPilotos;
-    private List<String> codigoPilotos;
-
-    /**
-     * Constructor que carga los datos de los pilotos desde el archivo JSON.
-     */
-    public ListarPilotos() {
-        cargarPilotos();
-    }
-
-    /**
-     * Carga los datos de los pilotos desde el archivo JSON.
-     */
-    private void cargarPilotos() {
-        nombrePilotos = new ArrayList<>();
-        nacionalidadPilotos = new ArrayList<>();
-        codigoPilotos = new ArrayList<>();
-
-        try (Reader reader = new FileReader(PILOTOS_FILE)) {
-            // Parsear el JSON usando Gson
-            Gson gson = new Gson();
-            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-
-            // Navegar por la estructura JSON para obtener los pilotos
-            JsonObject mrData = jsonObject.getAsJsonObject("MRData");
-            JsonObject driverTable = mrData.getAsJsonObject("DriverTable");
-            JsonArray drivers = driverTable.getAsJsonArray("Drivers");
-
-            // Recorrer todos los pilotos y guardar sus nombres
-            for (JsonElement driver : drivers) {
-                JsonObject driverObj = driver.getAsJsonObject();
-                String driverName = driverObj.get("givenName").getAsString() + " " +
-                                    driverObj.get("familyName").getAsString();
-                String nationality = driverObj.get("nationality").getAsString();
-                String code = driverObj.get("code").getAsString();
-                
-                nombrePilotos.add(driverName);
-                nacionalidadPilotos.add(nationality);
-                codigoPilotos.add(code);
-            }
-
-            System.out.println("Se han cargado " + nombrePilotos.size() + " pilotos.");
-
-        } catch (IOException e) {
-            System.err.println("Error al cargar los datos de pilotos: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
     /**
      * Método estático que muestra todos los pilotos disponibles.
      * Este método es llamado desde el menú principal.
      */
     public static void ListarPilotos() {
-        ListarPilotos listaPilotos = new ListarPilotos();
-        listaPilotos.mostrarPilotos();
+        // Obtener el gestor de datos de pilotos
+        PilotosDataManager pilotosManager = PilotosDataManager.getInstance();
+        
+        // Obtener la lista de todos los pilotos
+        List<Piloto> pilotos = pilotosManager.getPilotos();
+        
+        // Mostrar la información en formato tabla
+        mostrarPilotosEnTabla(pilotos);
     }
     
     /**
-     * Muestra la lista de pilotos con su número correspondiente.
+     * Muestra una lista de pilotos en formato de tabla.
+     * 
+     * @param pilotos Lista de pilotos a mostrar
      */
-    public void mostrarPilotos() {
+    private static void mostrarPilotosEnTabla(List<Piloto> pilotos) {
         System.out.println("\n===== PILOTOS FORMULA 1 - TEMPORADA 2024 =====\n");
 
-        if (nombrePilotos.isEmpty()) {
+        if (pilotos.isEmpty()) {
             System.out.println("No se encontraron pilotos para mostrar.");
             return;
         }
         
-        System.out.printf("%-3s %-30s %-20s %-10s\n", "N°", "NOMBRE", "NACIONALIDAD", "CÓDIGO");
+        System.out.printf("%-3s %-30s %-20s %-10s\n", "N°", "NOMBRE", "NACIONALIDAD", "EQUIPO");
         System.out.println("------------------------------------------------------------------");
 
-        for (int i = 0; i < nombrePilotos.size(); i++) {
+        int contador = 1;
+        for (Piloto piloto : pilotos) {
             System.out.printf("%-3d %-30s %-20s %-10s\n", 
-                (i + 1), 
-                nombrePilotos.get(i), 
-                nacionalidadPilotos.get(i),
-                codigoPilotos.get(i));
+                contador++, 
+                piloto.getNombre() + " " + piloto.getApellido(),
+                piloto.getPaisOrigen(),
+                piloto.getEquipoActual());
         }
         
         System.out.println("\n===================================================\n");
+        
+        // Agregar la pausa para continuar
+        System.out.println("Presione Enter para continuar...");
+        new Scanner(System.in).nextLine();
     }
 }

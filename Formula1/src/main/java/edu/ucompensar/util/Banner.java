@@ -1,4 +1,4 @@
-package edu.ucompensar;
+package edu.ucompensar.util;
 
 public class Banner {
 

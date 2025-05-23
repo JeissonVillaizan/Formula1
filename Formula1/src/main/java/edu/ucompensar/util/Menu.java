@@ -1,27 +1,19 @@
-package edu.ucompensar;
+package edu.ucompensar.util;
 
 import java.util.Scanner;
 
-import static edu.ucompensar.Banner.banner2;
-import static edu.ucompensar.Banner.banner4;
-import static edu.ucompensar.Banner.bannerMenuCarreras;
-import static edu.ucompensar.Banner.bannerMenuEscuderias;
-import static edu.ucompensar.Banner.bannerMenuPilotos;
-import static edu.ucompensar.Banner.bannerSeleccionCarrera;
-import static edu.ucompensar.Banner.bannerSeleccionPiloto;
-import static edu.ucompensar.Banner.bannerSeleccionarEscuderia;
-import edu.ucompensar.ClasesMenu.ImprimirConstructoresCarrera;
-import edu.ucompensar.ClasesMenu.ImprimirConstructoresEscuderia;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
-import edu.ucompensar.ClasesMenu.ImprimirInformacionEscuderia;
-import edu.ucompensar.ClasesMenu.ImprimirInformacionPiloto;
-import edu.ucompensar.ClasesMenu.ImprimirMundialPiloto;
-import edu.ucompensar.ClasesMenu.ImprimirPilotosCarrera;
-import edu.ucompensar.ClasesMenu.ImprimirPilotosEscuderia;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
-import edu.ucompensar.ClasesMenu.ListarEscuderia;
 import edu.ucompensar.ClasesMenu.ListarPilotos;
 import edu.ucompensar.ClasesMenu.SeleccionarCarrera;
+import static edu.ucompensar.util.Banner.banner2;
+import static edu.ucompensar.util.Banner.banner4;
+import static edu.ucompensar.util.Banner.bannerMenuCarreras;
+import static edu.ucompensar.util.Banner.bannerMenuEscuderias;
+import static edu.ucompensar.util.Banner.bannerMenuPilotos;
+import static edu.ucompensar.util.Banner.bannerSeleccionCarrera;
+import static edu.ucompensar.util.Banner.bannerSeleccionPiloto;
+import static edu.ucompensar.util.Banner.bannerSeleccionarEscuderia;
 public class Menu {
 
     private int opcion =0;
@@ -123,11 +115,11 @@ public class Menu {
                     break;
                 case 122:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA ");
-                    ImprimirConstructoresCarrera.ImprimirConstructoresCarrera();
+                    //ImprimirConstructoresCarrera.ImprimirConstructoresCarrera();
                     break;
                 case 123:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");
-                    ImprimirPilotosCarrera.ImprimirPilotosCarrera();
+                    //ImprimirPilotosCarrera.ImprimirPilotosCarrera();
                     break;
                 case 124:
                     return;
@@ -189,11 +181,11 @@ public class Menu {
             switch (opcion) {
                 case 221:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL PILOTO");
-                    ImprimirInformacionPiloto.ImprimirInformacionPiloto();
+                    //ImprimirInformacionPiloto.ImprimirInformacionPiloto();
                     break;
                 case 222:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA ESTE PILOTO");
-                    ImprimirMundialPiloto.ImprimirMundialPiloto();
+                    //ImprimirMundialPiloto.ImprimirMundialPiloto();
                     break;
                 case 223:
                     this.menuPilotos();
@@ -223,7 +215,7 @@ public class Menu {
             switch (opcion) {
                 case 31:
                     System.out.println("LLAMAR LISTAR ESCUDERIAS");
-                    ListarEscuderia.listarEscuderias(); 
+                    //ListarEscuderia.listarEscuderias(); 
                     break;
                 case 32:
                     menuSeleccionarEscuderia();
@@ -257,15 +249,15 @@ public class Menu {
             switch (opcion) {
                 case 321:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DE LA ESCUDERIA");
-                    ImprimirInformacionEscuderia.ImprimirInformacionEscuderia();
+                    //ImprimirInformacionEscuderia.ImprimirInformacionEscuderia();
                     break;
                 case 322:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES PARA ESTA ESCUDERIA");
-                    ImprimirConstructoresEscuderia.ImprimirConstructoresEscuderia();
+                    //ImprimirConstructoresEscuderia.ImprimirConstructoresEscuderia();
                     break;
                 case 323:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS PARA LOS PILOTOS DE ESTE ESCUDERIA");
-                    ImprimirPilotosEscuderia.ImprimirPilotosEscuderia();
+                    //ImprimirPilotosEscuderia.ImprimirPilotosEscuderia();
                     break;
                 case 324:
                     this.menuEscuderias();

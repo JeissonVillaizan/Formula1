@@ -22,7 +22,7 @@ public class RecoleccionDatosResultadoPiloto {
      */
     public static String obtenerResultadosPiloto(String driverId) {
         // Construir nombre del archivo
-        String nombreArchivo = "piloto_" + driverId + "_" + TEMPORADA_ACTUAL + ".json";
+        String nombreArchivo = "resultados_piloto_" + driverId + "_" + TEMPORADA_ACTUAL + ".json";
         File archivo = new File(DIRECTORIO_DATOS, nombreArchivo);
         
         // Verificar si el archivo ya existe
