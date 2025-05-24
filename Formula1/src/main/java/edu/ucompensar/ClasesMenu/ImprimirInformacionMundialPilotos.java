@@ -1,13 +1,14 @@
 package edu.ucompensar.ClasesMenu;
 
-import edu.ucompensar.model.resultados.ResultadoCircuito;
+
 import edu.ucompensar.datamanagers.ResultadosDataManager.ResultadosCircuitoDataManager;
+import edu.ucompensar.model.resultados.ResultadoCircuito;
 
 import java.util.*;
 
-public class ImprimirInformacionMundialConstructores {
+public class ImprimirInformacionMundialPilotos {
 
-    public static void ImprimirInformacionMundialConstructores(String carreraSeleccionada) {
+    public static void imprimirInformacionMundialPilotos(String carreraSeleccionada) {
         // Obtener el gestor de datos de resultados por circuito
         ResultadosCircuitoDataManager manager = ResultadosCircuitoDataManager.getInstance();
 
@@ -21,23 +22,22 @@ public class ImprimirInformacionMundialConstructores {
             return;
         }
 
-        // Obtener las puntuaciones de los equipos
-        Map<String, Double> puntuacionEscuderia = resultadoCircuito.getPuntuacionEscuderia();
+        // Obtener las puntuaciones de los pilotos
+        Map<String, Double> puntuacionPilotos = new HashMap<>();
+        List<String> nombresPilotos = resultadoCircuito.getPosicionPiloto();
+        List<Double> puntosPilotos = resultadoCircuito.getPuntuacionPiloto();
 
-        // Manejar el caso en que no haya puntuaciones disponibles
-        if (puntuacionEscuderia == null || puntuacionEscuderia.isEmpty()) {
-            System.out.println("No hay puntuaciones disponibles para los equipos en esta carrera.");
-            esperarEnter();
-            return;
+        for (int i = 0; i < nombresPilotos.size(); i++) {
+            puntuacionPilotos.put(nombresPilotos.get(i), puntosPilotos.get(i));
         }
 
-        // Ordenar los equipos por puntuación de forma descendente
-        List<Map.Entry<String, Double>> listaOrdenada = new ArrayList<>(puntuacionEscuderia.entrySet());
+        // Ordenar los pilotos por puntuación de forma descendente
+        List<Map.Entry<String, Double>> listaOrdenada = new ArrayList<>(puntuacionPilotos.entrySet());
         listaOrdenada.sort((e1, e2) -> Double.compare(e2.getValue(), e1.getValue()));
 
-        // Imprimir la información de los equipos con su posición
-        System.out.println("\n===== INFORMACIÓN DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA =====");
-        System.out.printf("%-10s %-30s %-10s\n", "Posición", "Equipo", "Puntos");
+        // Imprimir la información de los pilotos con su posición
+        System.out.println("\n===== INFORMACIÓN DEL MUNDIAL DE PILOTOS EN ESTA CARRERA =====");
+        System.out.printf("%-10s %-30s %-10s\n", "Posición", "Piloto", "Puntos");
         System.out.println("-------------------------------------------------------------");
 
         int posicion = 1;

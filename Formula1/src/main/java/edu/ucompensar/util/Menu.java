@@ -3,6 +3,7 @@ package edu.ucompensar.util;
 import java.util.Scanner;
 
 import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
+import edu.ucompensar.ClasesMenu.ImprimirInformacionMundialPilotos;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
 import edu.ucompensar.ClasesMenu.ListarPilotos;
 import edu.ucompensar.ClasesMenu.SeleccionarCarrera;
@@ -103,8 +104,8 @@ public class Menu {
             
             
             System.out.println("121. IMPRIMIR INFORMACION DEL CIRCUITO"); //Completado
-            System.out.println("122. IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA");
-            System.out.println("123. IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");
+            System.out.println("122. IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA");//Completado
+            System.out.println("123. IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");//Completado
             System.out.println("124. VOLVER MENU DE CARRERAS");
             System.out.println("125. VOLVER MENU PRINCIPAL");
             System.out.print("Ingrese su opción:  ");
@@ -116,12 +117,11 @@ public class Menu {
                     break;
                 case 122:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA ");
-                    ImprimirInformacionMundialConstructores imprimir = new ImprimirInformacionMundialConstructores();
-                    imprimir.imprimirInformacionMundialConstructores(carreraSeleccionada);
+                    ImprimirInformacionMundialConstructores.ImprimirInformacionMundialConstructores(carreraSeleccionada);
                     break;
                 case 123:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");
-                    //ImprimirPilotosCarrera.ImprimirPilotosCarrera();
+                    ImprimirInformacionMundialPilotos.imprimirInformacionMundialPilotos(carreraSeleccionada);
                     break;
                 case 124:
                     return;
