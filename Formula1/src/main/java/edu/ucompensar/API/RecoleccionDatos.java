@@ -41,44 +41,35 @@ public class RecoleccionDatos {
                 return;
             }
             
-            // Si no existe, hacer petición a la API
+            // Intentar hacer la petición a la API
             URL url = new URL(urlApi);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             
             int responseCode = conn.getResponseCode();
-            System.out.println("Código de respuesta para " + nombreArchivo + ": " + responseCode);
-            
-            if (responseCode == 200) {
-                // Leer respuesta
-                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
-                
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Leer la respuesta y guardar en el archivo
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                     FileWriter writer = new FileWriter(archivo)) {
+                    String linea;
+                    while ((linea = reader.readLine()) != null) {
+                        writer.write(linea);
+                    }
+                    System.out.println("Datos guardados en: " + archivo.getAbsolutePath());
                 }
-                reader.close();
-                
-                // Formatear JSON para mejor legibilidad
-                String jsonResponse = response.toString();
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode jsonNode = mapper.readTree(jsonResponse);
-                String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
-                
-                // Guardar respuesta en archivo
-                try (FileWriter fileWriter = new FileWriter(archivo)) {
-                    fileWriter.write(prettyJson);
-                }
-                
-                System.out.println("Datos guardados exitosamente en: " + archivo.getAbsolutePath());
             } else {
-                System.out.println("Error al conectar con la API: " + responseCode);
+                System.err.println("Error en la conexión: Código de respuesta " + responseCode);
             }
-            
+        } catch (javax.net.ssl.SSLHandshakeException e) {
+            System.err.println("Error SSL: " + e.getMessage());
+            System.out.println("Intentando con HTTP en lugar de HTTPS...");
+            // Reemplazar https con http y volver a intentar
+            if (urlApi.startsWith("https://")) {
+                String urlHttp = urlApi.replaceFirst("https://", "http://");
+                guardarDatosAPI(urlHttp, nombreArchivo);
+            }
         } catch (Exception e) {
-            System.out.println("Error al guardar " + nombreArchivo + ": " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("Error al guardar datos de la API: " + e.getMessage());
         }
     }
 }

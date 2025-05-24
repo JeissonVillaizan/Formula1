@@ -6,6 +6,7 @@ import edu.ucompensar.ClasesMenu.ImprimirInformacionCircuito;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
 import edu.ucompensar.ClasesMenu.ListarPilotos;
 import edu.ucompensar.ClasesMenu.SeleccionarCarrera;
+import edu.ucompensar.ClasesMenu.ImprimirInformacionMundialConstructores;
 import static edu.ucompensar.util.Banner.banner2;
 import static edu.ucompensar.util.Banner.banner4;
 import static edu.ucompensar.util.Banner.bannerMenuCarreras;
@@ -115,7 +116,8 @@ public class Menu {
                     break;
                 case 122:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE CONSTRUCTORES EN ESTA CARRERA ");
-                    //ImprimirConstructoresCarrera.ImprimirConstructoresCarrera();
+                    ImprimirInformacionMundialConstructores imprimir = new ImprimirInformacionMundialConstructores();
+                    imprimir.imprimirInformacionMundialConstructores(carreraSeleccionada);
                     break;
                 case 123:
                     System.out.println("LLAMAR IMPRIMIR INFORMACION DEL MUNDIAL DE PILOTOS EN ESTA CARRERA");
@@ -278,4 +280,3 @@ public class Menu {
 
     }
 }
-
