@@ -7,6 +7,7 @@ import edu.ucompensar.ClasesMenu.ImprimirInformacionMundialPilotos;
 import edu.ucompensar.ClasesMenu.ListarCarreras;
 import edu.ucompensar.ClasesMenu.ListarPilotos;
 import edu.ucompensar.ClasesMenu.SeleccionarCarrera;
+import edu.ucompensar.ClasesMenu.SeleccionarPiloto;
 import edu.ucompensar.ClasesMenu.ImprimirInformacionMundialConstructores;
 import static edu.ucompensar.util.Banner.banner2;
 import static edu.ucompensar.util.Banner.banner4;
@@ -168,7 +169,9 @@ public class Menu {
 
     public void menuSeleccionarPiloto(){
         this.opcion =0;
-
+        limpiarPantalla();
+        String pilotoSeleccionado = SeleccionarPiloto.seleccionarPilotoStatic();
+        limpiarPantalla();
         do {
             System.out.println(banner4);
             System.out.println(bannerSeleccionPiloto);
